@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+library avatar_letter;
 
-void main() => runApp(AvatarLetter());
+import 'package:flutter/material.dart';
 
 enum LetterType { Rectangle, Circular, None }
 
@@ -15,57 +15,7 @@ Color parseColor({String hexCode}) {
   return col;
 }
 
-class AvatarLetter extends StatefulWidget {
-  final LetterType letterType;
-  final String text;
-  final double fontSize;
-  final FontWeight fontWeight;
-  final String fontFamily;
-  Color colorBackground;
-  String colorBackgroundHex;
-  Color textColor;
-  String textColorHex;
-  double size;
-  int number;
-  bool upperCase;
-
-  AvatarLetter(
-      {Key key,
-      this.letterType,
-      this.text,
-      this.textColor,
-      this.textColorHex,
-      this.colorBackground,
-      this.colorBackgroundHex,
-      this.size,
-      this.number = 1,
-      this.fontWeight,
-      this.fontFamily,
-      this.fontSize,
-      this.upperCase}) {
-    assert(text != null);
-    assert(number > 0);
-  }
-
-  @override
-  _AvatarLetter createState() {
-    return _AvatarLetter(
-        letterType: letterType,
-        text: text,
-        textColor: textColor,
-        textColorHex: textColorHex,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily,
-        colorBackground: colorBackground,
-        colorBackgroundHex: colorBackgroundHex,
-        size: size,
-        number: number,
-        upperCase: upperCase);
-  }
-}
-
-class _AvatarLetter extends State<AvatarLetter> {
+class AvatarLetter extends StatelessWidget {
   LetterType letterType;
   final String text;
   final double fontSize;
@@ -76,27 +26,25 @@ class _AvatarLetter extends State<AvatarLetter> {
   Color textColor;
   String textColorHex;
   double size;
-  int number;
+  int numberLetters;
   bool upperCase;
 
-  _AvatarLetter(
-      {this.letterType,
-      this.text,
-      this.textColor,
-      this.textColorHex,
-      this.fontSize,
+  AvatarLetter(
+      {Key key,
+      @required this.letterType,
+      @required this.text,
+      @required this.textColor,
+      @required this.textColorHex,
+      @required this.colorBackground,
+      @required this.colorBackgroundHex,
+      this.size,
+      @required this.numberLetters = 1,
       this.fontWeight,
       this.fontFamily,
-      this.colorBackground,
-      this.colorBackgroundHex,
-      this.size,
-      this.number,
-      this.upperCase});
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
+      this.fontSize,
+      @required this.upperCase}) {
+    assert(text != null);
+    assert(numberLetters > 0);
   }
 
   @override
@@ -107,7 +55,7 @@ class _AvatarLetter extends State<AvatarLetter> {
     size = (size == null || size < 30.0) ? 50.0 : size;
     colorBackground = _colorBackgroundConfig();
     textColor = _colorTextConfig();
-    number = (number == null) ? 1 : number;
+    numberLetters = (numberLetters == null) ? 1 : numberLetters;
     return _leeterView();
   }
 
@@ -136,7 +84,7 @@ class _AvatarLetter extends State<AvatarLetter> {
     newText = upperCase ? newText.toUpperCase() : newText;
     var arrayLeeters = newText.trim().split(' ');
     if (arrayLeeters != null) {
-      if (arrayLeeters.length > 1 && arrayLeeters.length >= number) {
+      if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
         return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
       }
       return '${newText[0]}';

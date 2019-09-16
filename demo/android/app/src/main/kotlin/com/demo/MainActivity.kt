@@ -1,4 +1,4 @@
-package com.avatar_letter
+package com.demo
 
 import android.os.Bundle
 
