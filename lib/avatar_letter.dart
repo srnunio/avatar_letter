@@ -26,24 +26,23 @@ class AvatarLetter extends StatelessWidget {
   Color textColor;
   String textColorHex;
   double size;
-  int numberLetters;
-  bool upperCase;
+  final int numberLetters;
+  final bool upperCase;
 
   AvatarLetter(
       {Key key,
-      @required this.letterType,
+      this.letterType,
       @required this.text,
       @required this.textColor,
       @required this.textColorHex,
       @required this.backgroundColor,
       @required this.backgroundColorHex,
       this.size,
-      @required this.numberLetters = 1,
+      this.numberLetters = 1,
       this.fontWeight = FontWeight.bold,
       this.fontFamily,
       this.fontSize = 16,
-      @required this.upperCase}) {
-//    assert(text != null);
+      this.upperCase = false}) {
     assert(numberLetters > 0);
   }
 
@@ -51,11 +50,9 @@ class AvatarLetter extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     letterType = (letterType == null) ? LetterType.Rectangle : letterType;
-    upperCase = (upperCase == null) ? false : upperCase;
     size = (size == null || size < 30.0) ? 50.0 : size;
     backgroundColor = _colorBackgroundConfig();
     textColor = _colorTextConfig();
-    numberLetters = (numberLetters == null) ? 1 : numberLetters;
     return _leeterView();
   }
 
