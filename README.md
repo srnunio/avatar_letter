@@ -5,9 +5,8 @@ It is a widget that uses the first few letters of a word to create an avatar wit
 ## Preview
 
 ![AvatarLetter Gif](al.gif "AvatarLetter")
+
 ## PageView
-
-
 ![Use case Demo1](demo_1.png "use case")
 ![Use case Demo2](demo_3.png "use case")
 ## Getting Started
@@ -17,7 +16,7 @@ Add the plugin:
 ```yaml
 dependencies:
   ...
-  avatar_letter: ^1.0.0
+  avatar_letter: ^1.0.1
 ```
 
 # Basic Usage
