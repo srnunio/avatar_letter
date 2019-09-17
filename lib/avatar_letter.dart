@@ -21,8 +21,8 @@ class AvatarLetter extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  Color colorBackground;
-  String colorBackgroundHex;
+  Color backgroundColor;
+  String backgroundColorHex;
   Color textColor;
   String textColorHex;
   double size;
@@ -35,15 +35,15 @@ class AvatarLetter extends StatelessWidget {
       @required this.text,
       @required this.textColor,
       @required this.textColorHex,
-      @required this.colorBackground,
-      @required this.colorBackgroundHex,
+      @required this.backgroundColor,
+      @required this.backgroundColorHex,
       this.size,
       @required this.numberLetters = 1,
-      this.fontWeight,
+      this.fontWeight = FontWeight.bold,
       this.fontFamily,
-      this.fontSize,
+      this.fontSize = 16,
       @required this.upperCase}) {
-    assert(text != null);
+//    assert(text != null);
     assert(numberLetters > 0);
   }
 
@@ -53,18 +53,18 @@ class AvatarLetter extends StatelessWidget {
     letterType = (letterType == null) ? LetterType.Rectangle : letterType;
     upperCase = (upperCase == null) ? false : upperCase;
     size = (size == null || size < 30.0) ? 50.0 : size;
-    colorBackground = _colorBackgroundConfig();
+    backgroundColor = _colorBackgroundConfig();
     textColor = _colorTextConfig();
     numberLetters = (numberLetters == null) ? 1 : numberLetters;
     return _leeterView();
   }
 
   Color _colorBackgroundConfig() {
-    if (colorBackground == null && colorBackgroundHex == null)
+    if (backgroundColor == null && backgroundColorHex == null)
       return Colors.black;
-    else if (colorBackground == null && colorBackgroundHex != null)
-      return parseColor(hexCode: colorBackgroundHex);
-    return colorBackground;
+    else if (backgroundColor == null && backgroundColorHex != null)
+      return parseColor(hexCode: backgroundColorHex);
+    return backgroundColor;
   }
 
   Color _colorTextConfig() {
@@ -124,7 +124,7 @@ class AvatarLetter extends StatelessWidget {
     return Container(
       child: Material(
         shape: _buildTypeLeeter(),
-        color: colorBackground,
+        color: backgroundColor,
         child: Container(
           height: size,
           width: size,

@@ -99,15 +99,14 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 AvatarLetter(
                   size: 200,
-                  colorBackground: _colorBackgroundHex,
-                  textColor: _colorText,
+                  backgroundColor: Colors.amber,
+                  textColor: Colors.black,
                   fontSize: 100,
-                  upperCase: _upperCase,
-                  numberLetters: _numberLetters,
-                  letterType: _letterType,
-                  text: _input,
+                  upperCase: true,
+                  numberLetters: 1,
+                  letterType: LetterType.Circular,
+                  text: 'Test 01',
                 ),
-
                 SizedBox(
                   height: 50,
                 ),
