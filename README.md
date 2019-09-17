@@ -7,9 +7,9 @@ It is a widget that uses the first few letters of a word to create an avatar wit
 ![AvatarLetter Gif](al.gif "AvatarLetter")
 ## PageView
 
-![Use case Demo1](demo_3.png "use case")
-![Use case Demo2](demo_2.png "use case")
-![Use case Demo3](demo_1.png "use case")
+
+![Use case Demo1](demo_1.png "use case")
+![Use case Demo2](demo_3.png "use case")
 ## Getting Started
 
 Add the plugin:
