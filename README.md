@@ -4,11 +4,10 @@ It is a widget that uses the first few letters of a word to create an avatar wit
 
 ## Preview
 
-![AvatarLetter Gif](al.gif "AvatarLetter")
+<img src="/al.gif" width="270" height="480"> | 
+<img src="/demo_1.png" width="270" height="480"> | 
+<img src="/demo_3.png" width="270" height="480"> |
 
-## PageView
-![Use case Demo1](demo_1.png "use case")
-![Use case Demo2](demo_3.png "use case")
 ## Getting Started
 
 Add the plugin:
