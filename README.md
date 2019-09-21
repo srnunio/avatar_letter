@@ -4,9 +4,9 @@ It is a widget that uses the first few letters of a word to create an avatar wit
 
 ## Preview
 
-<img src="/al.gif" width="270" height="480"> | 
-<img src="/demo_1.png" width="270" height="480"> | 
-<img src="/demo_3.png" width="270" height="480"> |
+<img src="/al.gif" width="240" height="480"> | 
+<img src="/demo_1.png" width="240" height="480"> | 
+<img src="/demo_3.png" width="240" height="480"> |
 
 ## Getting Started
 
