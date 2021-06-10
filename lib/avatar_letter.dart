@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 enum LetterType { Rectangle, Circular, None }
 
-Color parseColor({String hexCode}) {
+Color parseColor({required String hexCode}) {
   String hex = hexCode.replaceAll("#", "");
   if (hex.isEmpty) hex = "000000";
   if (hex.length == 3) {
@@ -16,28 +16,28 @@ Color parseColor({String hexCode}) {
 }
 
 class AvatarLetter extends StatelessWidget {
-  LetterType letterType;
-  final String text;
+  final LetterType letterType;
+  final String? text;
   final double fontSize;
   final FontWeight fontWeight;
-  final String fontFamily;
-  Color backgroundColor;
-  String backgroundColorHex;
-  Color textColor;
-  String textColorHex;
-  double size;
+  final String? fontFamily;
+  late final Color backgroundColor;
+  final String? backgroundColorHex;
+  late final Color textColor;
+  final String? textColorHex;
+  late final double size;
   final int numberLetters;
   final bool upperCase;
 
   AvatarLetter(
-      {Key key,
-      this.letterType,
-      @required this.text,
-      @required this.textColor,
-      @required this.textColorHex,
-      @required this.backgroundColor,
-      @required this.backgroundColorHex,
-      this.size,
+      {Key? key,
+      this.letterType = LetterType.Rectangle,
+      required this.text,
+      required this.textColor,
+      required this.textColorHex,
+      required this.backgroundColor,
+      required this.backgroundColorHex,
+      this.size = 32,
       this.numberLetters = 1,
       this.fontWeight = FontWeight.bold,
       this.fontFamily,
@@ -49,54 +49,54 @@ class AvatarLetter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    letterType = (letterType == null) ? LetterType.Rectangle : letterType;
-    size = (size == null || size < 30.0) ? 50.0 : size;
+    size = (size < 30.0) ? 50.0 : size;
     backgroundColor = _colorBackgroundConfig();
     textColor = _colorTextConfig();
     return _leeterView();
   }
 
   Color _colorBackgroundConfig() {
-    if (backgroundColor == null && backgroundColorHex == null)
+    if (backgroundColorHex == null)
       return Colors.black;
-    else if (backgroundColor == null && backgroundColorHex != null)
-      return parseColor(hexCode: backgroundColorHex);
+    else if (backgroundColorHex != null)
+      return parseColor(hexCode: backgroundColorHex!);
     return backgroundColor;
   }
 
   Color _colorTextConfig() {
-    if (textColor == null && textColorHex == null)
+    if (textColorHex == null)
       return Colors.white;
-    else if (textColor == null && textColorHex != null)
-      return parseColor(hexCode: textColorHex);
+    else if (textColorHex != null) return parseColor(hexCode: textColorHex!);
     return textColor;
   }
 
-  String _runeString({String value}) {
+  String _runeString({required String value}) {
     return String.fromCharCodes(value.runes.toList());
   }
 
   String _textConfig() {
-    var newText = text == null ? '?' : _runeString(value: text);
+    var newText = text == null ? '?' : _runeString(value: text!);
     newText = upperCase ? newText.toUpperCase() : newText;
     var arrayLeeters = newText.trim().split(' ');
-    if (arrayLeeters != null) {
-      if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
-        return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
-      }
-      return '${newText[0]}';
+    if (arrayLeeters.length > 1 && arrayLeeters.length == numberLetters) {
+      return '${arrayLeeters[0][0].trim()}${arrayLeeters[1][0].trim()}';
     }
+    return '${newText[0]}';
   }
 
   Widget _buildText() {
+    final _textStyle = TextStyle(
+      color: textColor,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      fontFamily: fontFamily,
+    );
+
     return Text(
       _textConfig(),
-      style: TextStyle(
-        color: textColor,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: fontFamily,
-      ),
+      style: fontFamily == null
+          ? _textStyle
+          : _textStyle.copyWith(fontFamily: fontFamily),
     );
   }
 
