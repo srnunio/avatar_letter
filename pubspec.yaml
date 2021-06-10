@@ -1,6 +1,6 @@
 name: avatar_letter
 description: It is a widget that uses the first few letters of a word to create an avatar with a set of basic functions..
-version: 1.0.0
+version: 1.0.1+nullsafety
 author: Edvaldo Martins <edvaldonuniomartins@gmail.com>
 homepage: https://github.com/EdvaldoMartins/avatar_letter
 # The following defines the version and build number for your application.
